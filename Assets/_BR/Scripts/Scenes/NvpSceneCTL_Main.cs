@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using nvp.interfaces;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 public class NvpSceneCTL_Main : MonoBehaviour, IEventHandler
@@ -29,6 +30,11 @@ public class NvpSceneCTL_Main : MonoBehaviour, IEventHandler
 
     void Start()
     {
+        // removes the ui if game scene is present at start (for testing)
+        if(!SceneManager.GetSceneByName("Game").IsValid()) _sceneUI.SetActive(true);
+
+        _sceneController.SetMenuCam(GameObject.FindObjectOfType<Camera>());
+
         SubscribeToEvents();
     }
 
@@ -48,12 +54,14 @@ public class NvpSceneCTL_Main : MonoBehaviour, IEventHandler
 
     private void OnStartOnePlayerGame(object s, object e)
     {
+        _config.numberOfPlayers = 1;
         _sceneController.RequestScene("Game");
         _sceneUI.SetActive(false);
     }
 
     private void OnStartTwoPlayerGame(object s, object e)
     {
+        _config.numberOfPlayers = 2;
         _sceneController.RequestScene("Game");
         _sceneUI.SetActive(false);
     }

@@ -8,12 +8,14 @@ public class DI_Installer : MonoInstaller
     {
         Container.Bind<IEventController>()
             .To<NvpEventController>()
-            .AsSingle()
-            .NonLazy();
+            .AsSingle();
 
         Container.Bind<ISceneController>()
             .To<NvpSceneController>()
-            .AsSingle()
-            .NonLazy();
+            .AsSingle();
+
+        Container.Bind<IBallModel>()
+            .To<NvpSimpleBallModel>()
+            .AsSingle();
     }
 }

@@ -6,4 +6,5 @@ public enum NvpGameEvents
 {
     OnStartOnePlayerGame,
     OnStartTwoPlayerGame,
+    OnHitWall,
 }
