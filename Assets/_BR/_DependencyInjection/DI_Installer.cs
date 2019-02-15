@@ -15,7 +15,7 @@ public class DI_Installer : MonoInstaller
             .AsSingle();
 
         Container.Bind<IBallModel>()
-            .To<NvpSimpleBallModel>()
+            .To<NvpAdvanceBallModel>()
             .AsSingle();
     }
 }

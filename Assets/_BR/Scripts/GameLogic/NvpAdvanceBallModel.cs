@@ -1,7 +1,7 @@
 ﻿using nvp.interfaces;
 using UnityEngine;
 
-public class NvpSimpleBallModel : IBallModel
+public class NvpAdvanceBallModel : IBallModel
 {
     private float speedIncrease = 0;
     private float initialSpeed = 0;
@@ -17,7 +17,9 @@ public class NvpSimpleBallModel : IBallModel
     {
         Vector3 newDirection = oldDirection;
         newDirection.x *= -1f;
-        return newDirection;
+        newDirection.y = newDirection.x * ((Random.value - 0.5f) * 2);
+        
+        return newDirection.normalized;
     }
 
     public Vector3 GetStartupDirection()
@@ -32,7 +34,7 @@ public class NvpSimpleBallModel : IBallModel
 
     public float CalcNewSpeed(float speedFactor)
     {
-        if (speedIncrease < 0.001f)
+        if (speedIncrease == 0)
         {
             initialSpeed = speedFactor;
             speedIncrease = speedFactor / 5.0f;
@@ -44,6 +46,7 @@ public class NvpSimpleBallModel : IBallModel
 
     public float CalcNewStartSpeed(float speedFactor)
     {
+        initialSpeed = Mathf.Clamp(initialSpeed + 1, initialSpeed, 15);
         return initialSpeed;
     }
 }

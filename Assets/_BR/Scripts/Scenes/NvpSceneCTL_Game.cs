@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using nvp.interfaces;
 using UnityEngine;
 
 public class NvpSceneCTL_Game : MonoBehaviour
@@ -23,13 +24,13 @@ public class NvpSceneCTL_Game : MonoBehaviour
         switch (_config.numberOfPlayers)
         {
             case 0:
-                leftPlayer.playerModel = new NvpComputerV1Model();
-                rightPlayer.playerModel = new NvpComputerV1Model();
+                leftPlayer.playerModel = new NvpComputerV4Model();
+                rightPlayer.playerModel = new NvpComputerV4Model();
                 break;
 
             case 1:
                 leftPlayer.playerModel = new NvpHumanPlayerModel();
-                rightPlayer.playerModel = new NvpComputerV1Model();
+                rightPlayer.playerModel = new NvpComputerV4Model();
                 break;
 
             case 2:
@@ -38,8 +39,8 @@ public class NvpSceneCTL_Game : MonoBehaviour
                 break;
 
             default:
-                leftPlayer.playerModel = new NvpComputerV1Model();
-                rightPlayer.playerModel = new NvpComputerV1Model();
+                leftPlayer.playerModel = new NvpComputerV2Model();
+                rightPlayer.playerModel = new NvpComputerV2Model();
                 break;
         }
     }
