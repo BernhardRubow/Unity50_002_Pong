@@ -13,5 +13,7 @@ namespace nvp.interfaces
         Vector3 GetStartupDirection();
 
         float CalcNewSpeed(float speedFactor);
+
+        float CalcNewStartSpeed(float speedFactor);
     }
 }

@@ -7,4 +7,7 @@ public enum NvpGameEvents
     OnStartOnePlayerGame,
     OnStartTwoPlayerGame,
     OnHitWall,
+    OnLeftPlayerScores,
+    OnRightPlayerScores,
+    OnGameOver
 }

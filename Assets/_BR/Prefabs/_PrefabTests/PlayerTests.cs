@@ -7,7 +7,6 @@ using UnityEngine.TestTools;
 
 namespace Tests
 {
-
     public class PlayerTests
     {
         [UnityTest]
@@ -19,6 +18,7 @@ namespace Tests
 
             var world = GameObject.Instantiate(worldAsset);
             var player = GameObject.Instantiate(playerAsset, new Vector3(-40f, 0f, 0f), Quaternion.identity);
+            player.GetComponent<NvpPlayerCTL>().playerModel = new NvpHumanPlayerModel();
             
             var rb = player.GetComponent<Rigidbody>();
             var leftPlayerController = player.GetComponent<NvpPlayerCTL>();
@@ -46,6 +46,7 @@ namespace Tests
 
             var world = GameObject.Instantiate(worldAsset);
             var player = GameObject.Instantiate(playerAsset, new Vector3(-40f, 0f, 0f), Quaternion.identity);
+            player.GetComponent<NvpPlayerCTL>().playerModel = new NvpHumanPlayerModel();
 
             var rb = player.GetComponent<Rigidbody>();
             var leftPlayerController = player.GetComponent<NvpPlayerCTL>();

@@ -61,7 +61,7 @@ namespace Tests
             Assert.Less(newDir.x, 0f);
         }
 
-        [Theory]
+        [Test]
         public void GetStartupDirection_Should_be_valid()
         {
             IBallModel bl = new NvpSimpleBallModel();
@@ -70,6 +70,21 @@ namespace Tests
             Assert.That(dir.x, dir.x > 0f 
                 ? Is.EqualTo(1).Within(0.000001f) 
                 : Is.EqualTo(-1).Within(0.000001f));
+        }
+
+        [Test]
+        public void CalcNewStartSpeed_SpeedfactorGiven_ReturnsValidSpeed([Random(0, 20, 5)] int x)
+        {
+            IBallModel bl = new NvpSimpleBallModel();
+            float expextedResult = x + (x / 5.0f);
+            float result = bl.CalcNewSpeed(x);
+            Debug.LogFormat("{2}: {0} - {1}", result, expextedResult, x);
+            Assert.That(expextedResult, Is.EqualTo(bl.CalcNewSpeed(x)).Within(0.001f));
+           
+
+            var expectedResult = x + ((x*2 - x) / 2f  );
+            
+            Assert.That(bl.CalcNewStartSpeed(x*2), Is.EqualTo(expectedResult).Within(0.0000001f));
         }
     }
     

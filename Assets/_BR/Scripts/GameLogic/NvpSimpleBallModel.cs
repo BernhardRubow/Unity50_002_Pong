@@ -4,6 +4,7 @@ using UnityEngine;
 public class NvpSimpleBallModel : IBallModel
 {
     private float speedIncrease = 0;
+    private float initialSpeed = 0;
 
     public Vector3 CalculateNewDirAfterWallHit(Vector3 oldDirection)
     {
@@ -31,9 +32,19 @@ public class NvpSimpleBallModel : IBallModel
 
     public float CalcNewSpeed(float speedFactor)
     {
-        if (speedIncrease == 0) speedIncrease = speedFactor / 5.0f;
+        if (speedIncrease == 0)
+        {
+            initialSpeed = speedFactor;
+            speedIncrease = speedFactor / 5.0f;
+        }
 
         speedFactor += speedIncrease;
         return speedFactor;
+    }
+
+    public float CalcNewStartSpeed(float speedFactor)
+    {
+        initialSpeed = initialSpeed + (speedFactor - initialSpeed) / 2f;
+        return initialSpeed;
     }
 }

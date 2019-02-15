@@ -1,0 +1,16 @@
+{
+    "name": "_UiCtlAssembly",
+    "references": [
+        "_InterfacesAssembly",
+        "Unity.TextMeshPro",
+        "_EnumsAssembly"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
+}
